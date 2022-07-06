@@ -7,23 +7,23 @@ The dynamic REST API is an interface for the HarperDB database, granting you acc
 All REST API operations require a token for authentication.
 
 ### Username/Password Auth
-To get a token with your Active Directory Username and Password, create a POST request to `$DOMAIN_NAME/ad-auth/login`.
+To get a token with your Active Directory Username and Password, create a POST request to `$CF_HOST/ad-auth/login`.
 
 ```
-curl -X POST $DOMAIN_NAME:9926/ad-auth/login \
+curl -X POST $CF_HOST:9926/ad-auth/login \
    -H 'Content-Type: application/json' \
    -d '{"username":"doggo@harperdb.io","password":"D0GSRUL3!"}'
 ```
 
 ### Microsoft Login Dialog
-To get a token via the Microsoft Login Dialog, visit `$DOMAIN_NAME:9926/ad-auth/login` in a web browser.
+To get a token via the Microsoft Login Dialog, visit `$CF_HOST/ad-auth/login` in a web browser.
 
 ### Using the Token
 Record the token that's returned in either of the above requests to use in all REST API requests by adding it to the URL query (ex. /ad-auth/dev/dogs/1?token=lknan3th08ihn4)
 
 ## Create Data
 ```
-curl -X POST $DOMAIN_NANE:9926/ad-auth/dev/dog?token=16555c1bb8a3615ed383c8a9 \
+curl -X POST $CF_HOST/ad-auth/dev/dog?token=16555c1bb8a3615ed383c8a9 \
    -H 'Content-Type: application/json' \
    -d '{"id": 1, "name":"woofie","tail":"wag"}'
 ```
@@ -31,28 +31,28 @@ curl -X POST $DOMAIN_NANE:9926/ad-auth/dev/dog?token=16555c1bb8a3615ed383c8a9 \
 ## Read Data
 ### By ID
 ```
-curl -X GET $DOMAIN_NANE:9926/ad-auth/dev/dog/1?token=16555c1bb8a3615ed383c8a9
+curl -X GET $CF_HOST/ad-auth/dev/dog/1?token=16555c1bb8a3615ed383c8a9
 ```
 
 ### All
 ```
-curl -X GET $DOMAIN_NANE:9926/ad-auth/dev/dog?token=16555c1bb8a3615ed383c8a9
+curl -X GET $CF_HOST/ad-auth/dev/dog?token=16555c1bb8a3615ed383c8a9
 ```
 
 ## Update Data
 ### Change All Provided Object Properties
 ```
-curl -X PATCH $DOMAIN_NANE:9926/ad-auth/dev/dog/1?token=16555c1bb8a3615ed383c8a9
+curl -X PATCH $CF_HOST/ad-auth/dev/dog/1?token=16555c1bb8a3615ed383c8a9
 ```
 ### Replace Object with Provided Object
 ```
-curl -X PUT $DOMAIN_NANE:9926/ad-auth/dev/dog/1?token=16555c1bb8a3615ed383c8a9
+curl -X PUT $CF_HOST/ad-auth/dev/dog/1?token=16555c1bb8a3615ed383c8a9
 ```
 
 ## Delete Data
 ### Change All Provided Object Properties
 ```
-curl -X DELETE $DOMAIN_NANE:9926/ad-auth/dev/dog/1?token=16555c1bb8a3615ed383c8a9
+curl -X DELETE $CF_HOST/ad-auth/dev/dog/1?token=16555c1bb8a3615ed383c8a9
 ```
 
 ## Deploying This Custom Function
