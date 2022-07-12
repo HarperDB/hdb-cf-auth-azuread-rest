@@ -233,7 +233,7 @@ async function validate(request, response, next, hdbCore, logging) {
     request.body.hdb_user = { role: { permission: {} } }
     console.log('roles', roles)
     roles.forEach((role) => {
-      if (role === 'hdb.permissions.super_user') {
+      if (role === 'hdb.super_user') {
         request.body.hdb_user.role.permission.super_user = true
         return
       }
