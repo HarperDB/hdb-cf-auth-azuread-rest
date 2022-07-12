@@ -1,0 +1,90 @@
+{
+    "__createdtime__": 1657037971693,
+    "__updatedtime__": 1657037971693,
+    "active": true,
+    "refresh_token": null,
+    "role": {
+        "__createdtime__": 1657037971452,
+        "__updatedtime__": 1657037971452,
+        "id": "d2e7d572-8614-4d07-b040-c369005a3a97",
+        "permission": {
+            "super_user": true,
+            "system": {
+                "tables": {
+                    "hdb_table": {
+                        "read": true,
+                        "insert": false,
+                        "update": false,
+                        "delete": false,
+                        "attribute_permissions": []
+                    },
+                    "hdb_attribute": {
+                        "read": true,
+                        "insert": false,
+                        "update": false,
+                        "delete": false,
+                        "attribute_permissions": []
+                    },
+                    "hdb_schema": {
+                        "read": true,
+                        "insert": false,
+                        "update": false,
+                        "delete": false,
+                        "attribute_permissions": []
+                    },
+                    "hdb_user": {
+                        "read": true,
+                        "insert": false,
+                        "update": false,
+                        "delete": false,
+                        "attribute_permissions": []
+                    },
+                    "hdb_role": {
+                        "read": true,
+                        "insert": false,
+                        "update": false,
+                        "delete": false,
+                        "attribute_permissions": []
+                    },
+                    "hdb_job": {
+                        "read": true,
+                        "insert": false,
+                        "update": false,
+                        "delete": false,
+                        "attribute_permissions": []
+                    },
+                    "hdb_license": {
+                        "read": true,
+                        "insert": false,
+                        "update": false,
+                        "delete": false,
+                        "attribute_permissions": []
+                    },
+                    "hdb_info": {
+                        "read": true,
+                        "insert": false,
+                        "update": false,
+                        "delete": false,
+                        "attribute_permissions": []
+                    },
+                    "hdb_nodes": {
+                        "read": true,
+                        "insert": false,
+                        "update": false,
+                        "delete": false,
+                        "attribute_permissions": []
+                    },
+                    "hdb_temp": {
+                        "read": true,
+                        "insert": false,
+                        "update": false,
+                        "delete": false,
+                        "attribute_permissions": []
+                    }
+                }
+            }
+        },
+        "role": "super_user"
+    },
+    "username": "hdb"
+}

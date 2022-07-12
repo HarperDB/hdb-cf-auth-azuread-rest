@@ -2,6 +2,7 @@
 
 const putHandler = async (request, hdbCore) => {
   const put_query_body = request.body
+  delete put_query_body.hdb_user
 
   const get_table_query = {
     body: {

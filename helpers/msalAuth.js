@@ -1,18 +1,27 @@
 const crypto = require('crypto')
 const msal = require('@azure/msal-node')
 
-const MSAL_CONFIG = {
-  auth: {
+const homedir = require('os').homedir()
+const path = require('path')
+const fs = require('fs')
+const aadConfigFilePath = path.join(homedir, '.aad_config.json')
+
+const MSAL_CONFIG = { auth: {} }
+if (fs.existsSync(aadConfigFilePath)) {
+  MSAL_CONFIG.auth = JSON.parse(fs.readFileSync(aadConfigFilePath))
+} else {
+  MSAL_CONFIG.auth = {
     clientId: process.env.AAD_CLIENT_ID,
     authority: process.env.AAD_AUTH_URL,
     clientSecret: process.env.AAD_CLIENT_SECRET,
-  },
+    redirectUri: process.env.AAD_REDIRECT_URI,
+  }
 }
 
 const SCHEMA = 'hdb_msal_auth'
 const TABLE = 'sessions'
 
-const REDIRECT_URI = process.env.AAD_REDIRECT_URI
+const REDIRECT_URI = MSAL_CONFIG.redirectUri
 
 const PERMISSION_MAP = {
   read: 'read',
@@ -207,7 +216,8 @@ async function validate(request, response, next, hdbCore, logging) {
       }
       request.body.hdb_user = { role: { permission: {} } }
       results[0].roles.forEach((role) => {
-        const [schema, table, operation] = role.split('.')
+        const [type, schema, table, operation] = role.split('.')
+        if (type !== 'hdb') return
         if (!request.body.hdb_user.role.permission[schema]) {
           request.body.hdb_user.role.permission[schema] = { tables: {} }
         }

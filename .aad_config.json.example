@@ -1,0 +1,6 @@
+{
+  "clientId": "ADD_CLIENT_ID_HERE",
+  "authority": "ADD_AUTH_URL_HERE",
+  "clientSecret": "ADD_CLIENT_SECRET_HERE",
+  "redirectUri": "ADD_REDIRECT_URI_HERE"
+}
