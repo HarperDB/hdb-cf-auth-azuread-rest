@@ -1,7 +1,7 @@
 'use strict'
 
 const postHandler = (request, hdbCore) => {
-  const records = request.body
+  const records = Object.assign({}, request.body)
   delete records.hdb_user
   request.body = {
     operation: 'insert',

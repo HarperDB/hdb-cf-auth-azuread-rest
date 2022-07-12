@@ -23,7 +23,8 @@ Record the token that's returned in either of the above requests to use in all R
 
 ## Create Data
 ```
-curl -X POST $CF_HOST/ad-auth/dev/dog?token=16555c1bb8a3615ed383c8a9 \
+curl -X POST $CF_HOST/ad-auth/dev/dog \
+   -H "Authorization: $TOKEN" \
    -H 'Content-Type: application/json' \
    -d '{"id": 1, "name":"woofie","tail":"wag"}'
 ```
@@ -31,28 +32,28 @@ curl -X POST $CF_HOST/ad-auth/dev/dog?token=16555c1bb8a3615ed383c8a9 \
 ## Read Data
 ### By ID
 ```
-curl -X GET $CF_HOST/ad-auth/dev/dog/1?token=16555c1bb8a3615ed383c8a9
+curl -X GET $CF_HOST/ad-auth/dev/dog/5 -H "Authorization: $TOKEN"
 ```
 
 ### All
 ```
-curl -X GET $CF_HOST/ad-auth/dev/dog?token=16555c1bb8a3615ed383c8a9
+curl -X GET $CF_HOST/ad-auth/dev/dog -H "Authorization: $TOKEN"
 ```
 
 ## Update Data
 ### Change All Provided Object Properties
 ```
-curl -X PATCH $CF_HOST/ad-auth/dev/dog/1?token=16555c1bb8a3615ed383c8a9
+curl -X PATCH $CF_HOST/ad-auth/dev/dog/1 -H "Authorization: $TOKEN"
 ```
 ### Replace Object with Provided Object
 ```
-curl -X PUT $CF_HOST/ad-auth/dev/dog/1?token=16555c1bb8a3615ed383c8a9
+curl -X PUT $CF_HOST/ad-auth/dev/dog/1 -H "Authorization: $TOKEN"
 ```
 
 ## Delete Data
 ### Change All Provided Object Properties
 ```
-curl -X DELETE $CF_HOST/ad-auth/dev/dog/1?token=16555c1bb8a3615ed383c8a9
+curl -X DELETE $CF_HOST/ad-auth/dev/dog/1 -H "Authorization: $TOKEN"
 ```
 
 ## Deploying This Custom Function
@@ -69,6 +70,17 @@ AAD_REDIRECT_URI=
 ```
 
 There is also a `.env.example` file that can be copied to `.env`, populated with the credentials and used for development.
+
+## AAD Config
+As an alternative to using environment variables, the file `$HOME/.aad_config.json` can be created with the credentails. For example,
+```
+{
+  "clientId": "ADD_CLIENT_ID_HERE",
+  "authority": "ADD_AUTH_URL_HERE",
+  "clientSecret": "ADD_CLIENT_SECRET_HERE",
+  "redirectUri": "ADD_REDIRECT_URI_HERE"
+}
+```
 
 ## Development
 This repository contains a `Makefile` with targets to start a HarperDB docker container and attach to the Custom Functions directory.

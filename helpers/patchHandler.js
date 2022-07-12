@@ -1,7 +1,7 @@
 'use strict'
 
 const patchHandler = async (request, hdbCore) => {
-  const patch_query_body = request.body
+  const patch_query_body = Object.assign({}, request.body)
   delete patch_query_body.hdb_user
 
   const get_table_query = {

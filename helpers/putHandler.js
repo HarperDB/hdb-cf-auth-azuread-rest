@@ -1,7 +1,7 @@
 'use strict'
 
 const putHandler = async (request, hdbCore) => {
-  const put_query_body = request.body
+  const put_query_body = Object.assign({}, request.body)
   delete put_query_body.hdb_user
 
   const get_table_query = {
